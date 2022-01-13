@@ -1,0 +1,68 @@
+body>*:not(script) {
+    display: grid;
+    justify-content: center;
+}
+#top-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+h1 {
+    text-align: center;
+    flex-grow: var();
+}
+
+.container {
+    display: grid;
+    margin: 20px;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+menu {
+    padding: 0;
+    background-color: cyan;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+menu li {
+    padding: 0;
+    border: 2px solid black;
+    display: inline;
+    text-align: center;
+}
+
+.block {
+    padding: 20px;
+    border: 2px solid grey;
+    background-color: whitesmoke;
+}
+
+.block-button {
+
+}
+
+#counter {
+
+}
+
+#peek {
+
+}
+
+#ran-arr {
+
+}
+
+footer {
+    position: absolute;
+    bottom: 1px;
+}
+/* 
+Change number of columns as viewport changes.
+If reasonably possible, have a column per block
+Else use a columnnumber that distrubutes blocks somewhat
+evenly.
+*/

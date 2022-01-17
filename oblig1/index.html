@@ -8,38 +8,43 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script src="functions.js"></script>
-    <div id="top-container">
-        <h1>Øving 1</h1>
+    <header id="top-container">
+        <div class="img-container">
+            <img id="top-logo" src="https://www.pikpng.com/pngl/b/150-1506141_javascript-logo-png.png" alt="logo">
+        </div>
+        <h1 id="top-header">Øving 1</h1>
         <menu>
             <li>Home</li>
-            <li>Apps</li>
+            <li>SoMe</li>
         </menu>
-    </div>
-    <div class="container">
-        <div class="block">block 1 - images
-            <div>
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
-                <img src="" alt="">
+    </header>
+    <main class="main-container">
+        <div class="block"><span>IMAGES</span>
+            <div class="img-container">
+                <img src="https://www.gamebyte.com/wp-content/uploads/2018/08/Pokemon.jpg" alt="Pokemon">
+                <img src="https://www.theloadout.com/wp-content/uploads/2020/09/best-ps4-games-rocket-league.jpg" alt="rocket-league">
+                <img src="https://preview.redd.it/sals2th3lzn51.jpg?width=1920&format=pjpg&auto=webp&s=aeb66e907fde47aa396598eb01a80a43c4ac3976" alt="matrix-rain">
+                <img src="https://i.redd.it/90bg692j00c81.jpg" alt="prequal-memes">
             </div>
         </div>
-        <div class="block">block 2 - text
+        <div class="block"><span>TEXT</span>
             <div>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</div>
         </div>
-        <div class="block">block 3 - counter button
-            <button id="counter" class="block-button">Click me!</button>
+        <div class="block"><span>COUNTER</span>
+            <div id="counter-result">0</div>
+            <button id="counter-button" class="block-button" onclick="count()">Increment</button>
         </div>
-        <div class="block">block 4 - show/hide content button
-            <button id="peek" class="block-button">Click me!</button>
-    
+        <div class="block"><span>SHOW/HIDE CONTENT</span>
+            <img id="peek-result" src="https://www.bkacontent.com/wp-content/uploads/2016/09/landingpagesplash.jpg" alt="content">
+
+            <button id="peek" class="block-button" onclick="toggleContent()">Show</button>
         </div>
-        <div class="block">block 5 - random array generator
-            <button id="ran-arr" class="block-button">Click me!</button>
-    
+        <div class="block"><span>RANDOM WORD</span>
+            <div id="random-result"></div>
+            <button id="ran-arr" class="block-button" onclick="getRanWord()">Generate</button>
         </div>
-    </div>
-    <footer>Made by Magnus Hektoen Steensland</footer>
+    </main>
+    <footer><span>Magnus Hektoen Steensland</span></footer>
+    <script src="functions.js"></script>
 </body>
 </html>

@@ -115,7 +115,7 @@ img {
 
 footer {
     background-color: grey;
-    position:static;
+    position:fixed;
     bottom: 0;
     width: 100%;
     height: 70px;
@@ -125,6 +125,10 @@ footer > span {
     padding: 25px 50px;
     color:white;
     font-weight: bold;
+}
+
+#spacer {
+    height: 70px;
 }
 /* 
 Change number of columns as viewport changes.

@@ -1,12 +1,8 @@
 <template>
   <div class="calcContainer">
-    <div class="screenContainer"><div class="screen"></div></div>
+    <div class="screen"></div>
     <div class="buttonContainer">
-      <CalculatorButton
-        v-for="button in buttons"
-        :key="button.name"
-        :button="button"
-      />
+      <CalculatorButton v-for="button in buttons" :key="button.name" :button="button"/>
     </div>
   </div>
 </template>
@@ -16,6 +12,9 @@ import CalculatorButton from "@/components/CalculatorButton.vue";
 export default {
   name: "Calculator",
   components: { CalculatorButton },
+  props: {
+    msg: String,
+  },
   data() {
     return {
       buttons: [
@@ -44,42 +43,20 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .calcContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  max-width: 500px;
+  height: 100vh;
+  max-width: 600px;
   background: grey;
-  border: 10px solid black;
-  border-radius: 30px;
 }
 
-.screenContainer {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.screen {
-  /*Fill possible space after buttons are placed */
-  flex-grow: 1;
-  box-sizing: border-box;
-  border: 2px solid black;
-  border-radius: 30px;
-  margin: 20px;
-  background: darkgreen;
-  color: white;
-}
-
+/* .screen {
+  /*Fill possible space after buttons are placed
+} */
 .buttonContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, 60px);
   background: lightslategray;
   border-radius: 20px;
-  width: 100%;
 }
 </style>

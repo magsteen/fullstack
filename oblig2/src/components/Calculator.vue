@@ -47,7 +47,7 @@ export default {
         { value: " - ", type: Buttons.OPERATE },
         { value: " * ", type: Buttons.OPERATE },
         { value: " / ", type: Buttons.OPERATE },
-        { value: " =", type: Buttons.CALC, special: true },
+        { value: "=", type: Buttons.CALC, special: true },
         { value: "1", type: Buttons.OPERATE },
         { value: "2", type: Buttons.OPERATE },
         { value: "3", type: Buttons.OPERATE },
@@ -91,12 +91,13 @@ export default {
           break;
 
         case Buttons.CALC:
+          if ([""].includes(this.input)) break;
           try {
             this.logs.push({ formula: this.input, result: eval(this.input) });
           } catch (error) {
             this.logs.push({
               formula: this.input,
-              result: "Faulty expression",
+              result: "Syntax ERROR!",
             });
           }
           if (this.logs[this.logs.length - 1].result === Infinity)
@@ -110,28 +111,13 @@ export default {
 </script>
 
 <style scoped>
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.3.6,
-* Autoprefixer: v10.3.1
-* Browsers: last 4 version
-*/
-
 .calcContainer {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-rows: minmax(0, 1000fr) 1fr;
   grid-template-rows: minmax(0, 1000fr) 1fr;
+  grid-template-columns: minmax(0, 1000fr) 0;
   grid-template-areas:
-    "screenContainer"
-    "buttonContainer";
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -ms-flex-line-pack: stretch;
-  align-content: stretch;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+    "screenContainer" "."
+    "buttonContainer" ".";
   width: 100%;
   max-width: 500px;
   background: grey;
@@ -141,24 +127,19 @@ export default {
 }
 
 .screenContainer {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   grid-area: screenContainer;
+  display: grid;
+  grid-template-columns: minmax(0, 1000fr) 0;
+  grid-template-rows: minmax(0, 1000fr) 0;
+  grid-template-areas:
+    "screen" "."
+    "." ".";
 }
 
 .screen {
   /*Fill possible space after buttons are placed */
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  display: grid;
+  grid-area: screen;
   border: 2px solid black;
   border-radius: 30px;
   margin: 20px;
@@ -167,11 +148,6 @@ export default {
 }
 
 .logsAndInput {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   margin: 20px;
   overflow-y: scroll;
 }
@@ -180,25 +156,24 @@ hr {
   color: darkslategrey;
 }
 
-p {
-  margin: 15px;
+p,
+.formula {
   text-align: left;
+  margin: 15px;
   font-size: 150%;
+  overflow-x: scroll;
 }
 
 .result {
   text-align: right;
+  overflow-x: scroll;
 }
 
 .buttonContainer {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  display: -ms-grid;
   display: grid;
   grid-area: buttonContainer;
   grid-template-columns: repeat(auto-fill, 60px);
   background: lightslategray;
   border-radius: 20px;
-  width: 100%;
 }
 </style>

@@ -115,7 +115,6 @@ export default {
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  height: 100%;
   width: 100%;
   max-width: 500px;
   background: grey;
@@ -127,11 +126,13 @@ export default {
   display: flex;
   width: 100%;
   height: 100%;
+  max-height: 100%;
 }
 
 .screen {
   /*Fill possible space after buttons are placed */
   flex-grow: 1;
+  display: flex;
   box-sizing: border-box;
   border: 2px solid black;
   border-radius: 30px;
@@ -141,12 +142,14 @@ export default {
 }
 
 .logsAndInput {
+  flex-grow: 1;
   box-sizing: border-box;
   margin: 20px;
+  overflow-y: scroll;
 }
+
 hr {
   color: darkslategrey;
-
 }
 
 p {

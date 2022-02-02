@@ -16,6 +16,7 @@ export default {
 <style>
 body {
   margin: 0%;
+  max-height: 100vh;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -26,6 +27,8 @@ body {
   display: flex;
   justify-content: center;
   height: 100vh;
+  max-height: 100vh;
   width: 100vw;
+  max-width: 100vw;
 }
 </style>

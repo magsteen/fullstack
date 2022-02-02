@@ -6,7 +6,7 @@
           <div v-for="log in logs" :key="log">
             <p class="formula">{{ log.formula }}</p>
             <p class="result">{{ "= " + log.result }}</p>
-            <hr>
+            <hr />
           </div>
           <p class="inputField">{{ input }}</p>
         </div>
@@ -110,29 +110,54 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 .calcContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: minmax(0, 1000fr) 1fr;
+  grid-template-rows: minmax(0, 1000fr) 1fr;
+  grid-template-areas:
+    "screenContainer"
+    "buttonContainer";
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -ms-flex-line-pack: stretch;
+  align-content: stretch;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   max-width: 500px;
   background: grey;
   border: 10px solid black;
   border-radius: 30px;
+  max-height: 100%;
 }
 
 .screenContainer {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
+  grid-area: screenContainer;
 }
 
 .screen {
   /*Fill possible space after buttons are placed */
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border: 2px solid black;
   border-radius: 30px;
@@ -142,7 +167,10 @@ export default {
 }
 
 .logsAndInput {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
   flex-grow: 1;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 20px;
   overflow-y: scroll;
@@ -163,7 +191,11 @@ p {
 }
 
 .buttonContainer {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  display: -ms-grid;
   display: grid;
+  grid-area: buttonContainer;
   grid-template-columns: repeat(auto-fill, 60px);
   background: lightslategray;
   border-radius: 20px;

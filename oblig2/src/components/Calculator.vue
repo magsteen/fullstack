@@ -1,15 +1,13 @@
 <template>
   <div class="calcContainer">
-    <div class="screenContainer">
-      <div class="screen">
-        <div class="logsAndInput">
-          <div v-for="log in logs" :key="log">
-            <p class="formula">{{ log.formula }}</p>
-            <p class="result">{{ "= " + log.result }}</p>
-            <hr />
-          </div>
-          <p class="inputField">{{ input }}</p>
+    <div class="screen">
+      <div id="logsAndInput">
+        <div v-for="log in logs" :key="log">
+          <p class="formula">{{ log.formula }}</p>
+          <p class="result">{{ "= " + log.result }}</p>
+          <hr />
         </div>
+        <p class="inputField">{{ input }}</p>
       </div>
     </div>
     <div class="buttonContainer">
@@ -64,10 +62,6 @@ export default {
     };
   },
   methods: {
-    operate(element) {
-      this.input += element;
-    },
-
     handleClick(button) {
       switch (button.type) {
         case Buttons.C:
@@ -111,12 +105,22 @@ export default {
 </script>
 
 <style scoped>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 .calcContainer {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: minmax(0, 1000fr) 1fr;
   grid-template-rows: minmax(0, 1000fr) 1fr;
+  -ms-grid-columns: minmax(0, 1000fr) 0;
   grid-template-columns: minmax(0, 1000fr) 0;
   grid-template-areas:
-    "screenContainer" "."
+    "screen" "."
     "buttonContainer" ".";
   width: 100%;
   max-width: 500px;
@@ -126,18 +130,10 @@ export default {
   max-height: 100%;
 }
 
-.screenContainer {
-  grid-area: screenContainer;
-  display: grid;
-  grid-template-columns: minmax(0, 1000fr) 0;
-  grid-template-rows: minmax(0, 1000fr) 0;
-  grid-template-areas:
-    "screen" "."
-    "." ".";
-}
-
 .screen {
-  /*Fill possible space after buttons are placed */
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  display: -ms-grid;
   display: grid;
   grid-area: screen;
   border: 2px solid black;
@@ -147,7 +143,7 @@ export default {
   color: white;
 }
 
-.logsAndInput {
+#logsAndInput {
   margin: 20px;
   overflow-y: scroll;
 }
@@ -161,16 +157,22 @@ p,
   text-align: left;
   margin: 15px;
   font-size: 150%;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .result {
   text-align: right;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .buttonContainer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  display: -ms-grid;
   display: grid;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   grid-area: buttonContainer;
   grid-template-columns: repeat(auto-fill, 60px);
   background: lightslategray;

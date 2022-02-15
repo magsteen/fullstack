@@ -1,10 +1,11 @@
 <template>
-  <h1 class="test">Hello</h1>
+  <div class="test"></div>
+  <h2>Feedback</h2>
 </template>
 
 <script>
 export default {
-  name: "Contactform",
+  name: "Feedback",
   data() {
     return;
   },

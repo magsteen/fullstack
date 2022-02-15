@@ -7,6 +7,10 @@
 </template>
 
 <style>
+:root {
+  --navHeight: 80px;
+}
+
 body {
   margin: 0%;
   /**max-height: 100vh;*/
@@ -20,13 +24,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  max-height: 100vh;
-  width: 100vw;
-  max-width: 100vw;
 }
 
 #nav {
+  height: calc(var(--navHeight) - 60px);
   padding: 30px;
 }
 

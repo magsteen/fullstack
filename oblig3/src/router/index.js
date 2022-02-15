@@ -1,17 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Calculator from "@/components/Calculator.vue";
-import Contactform from "@/components/Contactform.vue";
+import CalculatorView from "@/views/CalculatorView.vue";
+import ContactformView from "@/views/ContactformView.vue";
 
 const routes = [
   {
     path: "/",
-    name: "Calculator",
-    component: Calculator,
+    name: "CalculatorView",
+    component: CalculatorView,
   },
   {
     path: "/contactform",
-    name: "Contactform",
-    component: Contactform,
+    name: "ContactformView",
+    component: ContactformView,
   },
 ];
 

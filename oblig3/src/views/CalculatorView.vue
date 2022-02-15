@@ -1,5 +1,5 @@
 <template>
-  <div class="pageStyle">
+  <div class="view">
     <Calculator />
   </div>
 </template>
@@ -8,16 +8,19 @@
 import Calculator from "@/components/Calculator.vue";
 
 export default {
-  name: "Calculator",
+  name: "CalculatorView",
   components: {
     Calculator,
   },
 };
 </script>
 
-<style>
-.pageStyle {
+<style >
+.view {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - var(--navHeight));
   width: 100vw;
 }
 </style>

@@ -1,5 +1,4 @@
 <template>
-  <div class="test"></div>
   <h2>Feedback</h2>
 </template>
 
@@ -13,8 +12,4 @@ export default {
 </script>
 
 <style scoped>
-.test {
-  width: 100%;
-  height: 100%;
-}
 </style>

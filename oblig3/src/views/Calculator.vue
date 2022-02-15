@@ -1,11 +1,10 @@
 <template>
-  <div class="home">
+  <div class="pageStyle">
     <Calculator />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Calculator from "@/components/Calculator.vue";
 
 export default {
@@ -15,3 +14,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.pageStyle {
+  display: flex;
+  width: 100vw;
+}
+</style>

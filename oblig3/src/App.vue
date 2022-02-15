@@ -9,7 +9,7 @@
 <style>
 body {
   margin: 0%;
-  max-height: 100vh;
+  /**max-height: 100vh;*/
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -18,7 +18,8 @@ body {
   text-align: center;
   color: #2c3e50;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
   max-height: 100vh;
   width: 100vw;

@@ -124,10 +124,12 @@ export default {
     "buttonContainer" ".";
   width: 100%;
   max-width: 500px;
+  height: 100%;
+  max-height: 80vh;
+
   background: grey;
   border: 10px solid black;
   border-radius: 30px;
-  max-height: 100%;
 }
 
 .screen {

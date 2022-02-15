@@ -1,5 +1,7 @@
 <template>
-  <button v-bind:class="{ special: button.special }">{{ button.name }}</button>
+  <button v-bind:class="{ special: button.special }">
+    {{ button.value }}
+  </button>
 </template>
 
 <script>

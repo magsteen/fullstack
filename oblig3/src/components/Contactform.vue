@@ -2,23 +2,30 @@
   <div class="container">
     <h1>Contactform</h1>
     <form class="form-container">
-      <BaseInput label="Name" type="text" />
-      <BaseInput label="E-mail" type="text" />
-      <BaseInput label="Message" type="text" />
+      <ContactformItem label="Name" type="text" v-model="feedback.name" />
+      <ContactformItem label="E-mail" type="text" v-model="feedback.email" />
+      <ContactformItem label="Message" type="text" v-model="feedback.message" />
+      <button type="submit">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
-import BaseInput from "@/components/BaseInput.vue";
+import ContactformItem from "@/components/ContactformItem.vue";
 
 export default {
   name: "Contactform",
   components: {
-    BaseInput,
+    ContactformItem,
   },
   data() {
-    return;
+    return {
+      feedback: {
+        name: "",
+        email: "",
+        message: "",
+      },
+    };
   },
 };
 </script>
@@ -36,6 +43,10 @@ export default {
   display: grid;
   width: 100%;
   justify-content: center;
+}
+
+.input {
+  padding: 0px 10px;
 }
 
 .test {

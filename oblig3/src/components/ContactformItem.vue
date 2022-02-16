@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "BaseInput",
+  name: "ContactformItem",
   props: {
     label: {
       type: String,

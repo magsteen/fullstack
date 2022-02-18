@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Contactform</h1>
-    <form class="form-container">
+    <form class="form-container" @submit.prevent="onSubmit">
       <ContactformItem label="Name" type="text" v-model="feedback.name" />
       <ContactformItem label="E-mail" type="text" v-model="feedback.email" />
       <ContactformItem label="Message" type="text" v-model="feedback.message" />
@@ -12,6 +12,7 @@
 
 <script>
 import ContactformItem from "@/components/ContactformItem.vue";
+import FeedbackService from "@/services/FeedbackService.js";
 
 export default {
   name: "Contactform",
@@ -26,6 +27,14 @@ export default {
         message: "",
       },
     };
+  },
+  methods: {
+    onSubmit() {
+      const feedback = { ...this.feedback };
+      FeedbackService.postFeedback(feedback).catch((error) => {
+        console.log(error);
+      });
+    },
   },
 };
 </script>

@@ -4,7 +4,7 @@
       <div id="name">{{ item.name }}</div>
       <div id="mail">- {{ item.email }}</div>
     </div>
-    <div class="break"/>
+    <div class="break" />
     <div class="content">{{ item.message }}</div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
   font-size: 0.75rem;
 }
 .box {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   height: 120px;
   width: 300px;
   border: 1px solid gray;

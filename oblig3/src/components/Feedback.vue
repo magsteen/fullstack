@@ -7,6 +7,7 @@
 
 <script>
 import FeedbackItem from "@/components/FeedbackItem.vue";
+import FeedbackService from "@/services/FeedbackService.js";
 
 export default {
   name: "Feedback",
@@ -32,6 +33,15 @@ export default {
         },
       ],
     };
+  },
+  created() {
+    FeedbackService.getFeedbacks()
+      .then((r) => {
+        this.Feedbacks = r.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

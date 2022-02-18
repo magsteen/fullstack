@@ -40,9 +40,17 @@ export default {
 }
 
 .form-container {
-  display: grid;
-  width: 100%;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  align-self: flex-end;
+}
+
+.form-container * {
+  margin: 10px;
 }
 
 .input {

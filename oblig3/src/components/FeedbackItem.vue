@@ -1,6 +1,9 @@
 <template>
   <div class="box">
-    <div class="header">{{ item.name }} - {{ item.email }}</div>
+    <div class="header">
+      <div id="name">{{ item.name }}</div>
+      <div id="mail">- {{ item.email }}</div>
+    </div>
     <div class="break"/>
     <div class="content">{{ item.message }}</div>
   </div>
@@ -19,6 +22,10 @@ export default {
 </script>
 
 <style scoped>
+* {
+  text-align: left;
+  font-size: 0.75rem;
+}
 .box {
   font-family: 'Courier New', Courier, monospace;
   height: 120px;
@@ -26,7 +33,6 @@ export default {
   border: 1px solid gray;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 .break {
   border-top: 1px solid grey;
@@ -37,6 +43,6 @@ export default {
   margin: 20px 20px 5px 20px;
 }
 .content {
-    margin: 10px 20px 10px 20px;
+  margin: 10px 20px 10px 20px;
 }
 </style>

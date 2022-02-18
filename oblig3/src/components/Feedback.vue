@@ -18,9 +18,17 @@ export default {
       Feedbacks: [
         {
           key: 0,
-          name: "first",
-          email: "mailing",
-          message: "here is a message",
+          name: "Navn navnesen",
+          email: "navn@navnesen.com",
+          message:
+            "Create calcumulator! Gots to say. Oooga booga spaaaammememer",
+        },
+        {
+          key: 1,
+          name: "Navn navnesen",
+          email: "navn@navnesen.com",
+          message:
+            "Create calcumulator! Gots to say. Oooga booga spaaaammememer",
         },
       ],
     };
@@ -35,5 +43,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.container *:not(h1) {
+  margin: 10px;
 }
 </style>

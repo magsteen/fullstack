@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "ContactformItem",
+  name: "FormItem",
   props: {
     label: {
       type: String,

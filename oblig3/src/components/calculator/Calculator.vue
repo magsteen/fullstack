@@ -30,7 +30,7 @@ const Buttons = {
   CALC: 5,
 };
 
-import CalculatorButton from "@/components/CalculatorButton.vue";
+import CalculatorButton from "@/components//calculator/CalculatorButton.vue";
 export default {
   name: "Calculator",
   components: { CalculatorButton },

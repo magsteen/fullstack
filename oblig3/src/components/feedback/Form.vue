@@ -2,22 +2,22 @@
   <div class="container">
     <h1>Contactform</h1>
     <form class="form-container" @submit.prevent="onSubmit">
-      <ContactformItem label="Name" type="text" v-model="feedback.name" />
-      <ContactformItem label="E-mail" type="text" v-model="feedback.email" />
-      <ContactformItem label="Message" type="text" v-model="feedback.message" />
+      <FormItem label="Name" type="text" v-model="feedback.name" />
+      <FormItem label="E-mail" type="text" v-model="feedback.email" />
+      <FormItem label="Message" type="text" v-model="feedback.message" />
       <button type="submit">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
-import ContactformItem from "@/components/ContactformItem.vue";
+import FormItem from "@/components/feedback/FormItem.vue";
 import FeedbackService from "@/services/FeedbackService.js";
 
 export default {
-  name: "Contactform",
+  name: "Form",
   components: {
-    ContactformItem,
+    FormItem,
   },
   data() {
     return {

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import FeedbackItem from "@/components/FeedbackItem.vue";
+import FeedbackItem from "@/components/feedback/FeedbackItem.vue";
 import FeedbackService from "@/services/FeedbackService.js";
 
 export default {

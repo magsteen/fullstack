@@ -1,18 +1,18 @@
 <template>
   <div class="view">
-    <Contactform class="components" />
+    <Form class="components" />
     <Feedback class="components" />
   </div>
 </template>
 
 <script>
-import Contactform from "@/components/Contactform.vue";
-import Feedback from "@/components/Feedback.vue";
+import Form from "@/components//feedback/Form.vue";
+import Feedback from "@/components/feedback/Feedback.vue";
 
 export default {
-  name: "ContactformView",
+  name: "FeedbackFormView",
   components: {
-    Contactform,
+    Form,
     Feedback,
   },
 };

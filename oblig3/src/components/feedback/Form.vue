@@ -20,17 +20,17 @@ export default {
   },
   data() {
     return {
-      form: {
-        name: "",
-        email: "",
-        message: "",
-      },
+      form: this.$store.state.lastFeedback,
     };
+  },
+  computed: {
+    usePrevoiusState() {
+      return this.$store.state.lastFeedback;
+    },
   },
   methods: {
     onSubmit() {
       const feedback = { ...this.form };
-      console.log(feedback);
       this.$store.dispatch("createFeedback", feedback);
     },
   },

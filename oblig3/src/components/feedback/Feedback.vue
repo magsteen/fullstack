@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     feedbacks() {
-      return this.$store.getters.feedbacks;
+      return this.$store.state.feedbacks;
     },
   },
 };

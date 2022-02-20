@@ -5,7 +5,11 @@ export default createStore({
   state: {
     user: "Monke",
     feedbacks: [],
-    feedback: {},
+    lastFeedback: {
+      name: "",
+      email: "",
+      message: "",
+    },
   },
   mutations: {
     SET_LOADING(state, isloading) {
@@ -17,12 +21,16 @@ export default createStore({
     SET_FEEDBACKS(state, feedbacks) {
       state.feedbacks = feedbacks;
     },
+    SET_LAST_FEEDBACK(state, feedback) {
+      state.lastFeedback = feedback;
+    },
   },
   actions: {
     createFeedback({ commit }, feedback) {
       FeedbackService.postFeedback(feedback)
         .then(() => {
           commit("ADD_FEEDBACK", feedback);
+          commit("SET_LAST_FEEDBACK", feedback);
         })
         .catch((error) => {
           console.log(error);
@@ -37,20 +45,6 @@ export default createStore({
           console.log(err);
         });
     },
-    fetchFeedback({ commit }, id) {
-      FeedbackService.getFeedback(id)
-        .then((r) => {
-          commit("SET_FEEDBACK", r.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
   },
   modules: {},
-  getters: {
-    feedback: (state) => {
-      return state.feedback;
-    },
-  },
 });

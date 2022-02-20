@@ -2,10 +2,10 @@
   <div class="container">
     <label v-if="label">{{ label }}</label>
     <input
-      :value="value"
+      :value="modelValue"
       :placeholder="label"
       class="inputfield"
-      @input="$emit('update:value', $event.target.value)"
+      @input="$emit('update:modelValue', $event.target.value)"
     />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
       type: String,
       default: "",
     },
-    value: {
+    modelValue: {
       type: [String, Number],
       default: "",
     },

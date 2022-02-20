@@ -2,9 +2,9 @@
   <div class="container">
     <h1>Contactform</h1>
     <form class="form-container" @submit.prevent="onSubmit">
-      <FormItem label="Name" type="text" v-model="feedback.name" />
-      <FormItem label="E-mail" type="text" v-model="feedback.email" />
-      <FormItem label="Message" type="text" v-model="feedback.message" />
+      <FormItem label="Name" type="text" v-model="form.name" />
+      <FormItem label="E-mail" type="text" v-model="form.email" />
+      <FormItem label="Message" type="text" v-model="form.message" />
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -12,7 +12,6 @@
 
 <script>
 import FormItem from "@/components/feedback/FormItem.vue";
-import FeedbackService from "@/services/FeedbackService.js";
 
 export default {
   name: "Form",
@@ -21,7 +20,7 @@ export default {
   },
   data() {
     return {
-      feedback: {
+      form: {
         name: "",
         email: "",
         message: "",
@@ -30,10 +29,9 @@ export default {
   },
   methods: {
     onSubmit() {
-      const feedback = { ...this.feedback };
-      FeedbackService.postFeedback(feedback).catch((error) => {
-        console.log(error);
-      });
+      const feedback = { ...this.form };
+      console.log(feedback);
+      this.$store.dispatch("createFeedback", feedback);
     },
   },
 };

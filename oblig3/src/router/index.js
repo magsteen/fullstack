@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import CalculatorView from "@/views/CalculatorView.vue";
-import ContactformView from "@/views/ContactformView.vue";
+import FeedbackFormView from "@/views/FeedbackFormView.vue";
 
 const routes = [
   {
@@ -10,8 +10,8 @@ const routes = [
   },
   {
     path: "/contactform",
-    name: "ContactformView",
-    component: ContactformView,
+    name: "FeedbackFormView",
+    component: FeedbackFormView,
   },
 ];
 

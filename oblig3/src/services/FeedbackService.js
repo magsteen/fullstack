@@ -10,11 +10,13 @@ const API = axios.create({
 });
 
 export default {
+  postFeedback(feedback) {
+    return API.post("/feedbacks", feedback);
+  },
   getFeedbacks() {
     return API.get("/feedbacks");
   },
-
-  postFeedback(feedback) {
-    return API.post("/feedbacks", feedback);
+  getFeedback(id) {
+    return API.get("/feedbacks/" + id);
   },
 };

@@ -1,16 +1,22 @@
 <template>
   <div class="container">
-    <label v-if="label">{{ label }}</label>
+    <label :for="uuid" v-if="label">{{ label }}</label>
     <input
+      v-bind="$attrs"
       :value="modelValue"
       :placeholder="label"
       class="inputfield"
       @input="$emit('update:modelValue', $event.target.value)"
+      :id="uuid"
     />
+
+    <p v-if="error" class="errorMessage" :id="`${uuid}-error`">{{ error }}</p>
   </div>
 </template>
 
 <script>
+import NewUID from "@/utils/uid.js";
+
 export default {
   name: "FormItem",
   props: {
@@ -22,6 +28,20 @@ export default {
       type: [String, Number],
       default: "",
     },
+    modelType: {
+      type: String,
+      default: "",
+    },
+    error: {
+      type: String,
+      default: "",
+    },
+  },
+  setup() {
+    const uuid = NewUID().getID();
+    return {
+      uuid,
+    };
   },
 };
 </script>
@@ -34,5 +54,10 @@ export default {
 }
 .inputfield {
   height: 50px;
+}
+
+.errorMessage {
+  color: red;
+  align-self: flex-end;
 }
 </style>

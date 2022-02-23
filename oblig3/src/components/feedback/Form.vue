@@ -2,9 +2,9 @@
   <div class="container">
     <h1>Contactform</h1>
     <form class="form-container" @submit.prevent="onSubmit">
-      <FormItem label="Name" type="text" v-model="form.name" />
-      <FormItem label="E-mail" type="text" v-model="form.email" />
-      <FormItem label="Message" type="text" v-model="form.message" />
+      <FormItem label="Name" v-model="name" :error="errors.name" />
+      <FormItem label="E-mail" v-model="email" :error="errors.email" />
+      <FormItem label="Message" v-model="message" :error="errors.message" />
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -12,27 +12,63 @@
 
 <script>
 import FormItem from "@/components/feedback/FormItem.vue";
+import { useField, useForm } from "vee-validate";
+import { object, string } from "yup";
 
 export default {
   name: "Form",
   components: {
     FormItem,
   },
-  data() {
-    return {
-      form: this.$store.state.lastFeedback,
-    };
-  },
-  computed: {
-    usePrevoiusState() {
-      return this.$store.state.lastFeedback;
-    },
-  },
   methods: {
-    onSubmit() {
-      const feedback = { ...this.form };
-      this.$store.dispatch("createFeedback", feedback);
+    async onSubmit() {
+      try {
+        await this.submit().then((feedback) => {
+          if (feedback === undefined) {
+            return;
+          }
+          console.log(feedback);
+          this.$store.dispatch("createFeedback", feedback);
+          alert("Feedback submitted");
+        });
+      } catch (error) {
+        console.error(error);
+      }
     },
+  },
+  setup() {
+    const validationSchema = object({
+      name: string().required("name is required").min(2, "to short name"),
+      email: string().required("email is required").email("invalid email"),
+      message: string().required("message is required"),
+    });
+
+    const { handleSubmit, errors } = useForm({
+      validationSchema,
+      initialValues: {
+        name: "",
+        email: "",
+        message: "",
+      },
+    });
+
+    const { value: name } = useField("name");
+    const { value: email } = useField("email");
+    const { value: message } = useField("message");
+
+    const submit = handleSubmit((values) => {
+      console.log(values);
+      return values;
+    });
+
+    return {
+      validationSchema,
+      errors,
+      submit,
+      name,
+      email,
+      message,
+    };
   },
 };
 </script>

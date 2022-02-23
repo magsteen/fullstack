@@ -6,9 +6,9 @@ export default createStore({
     user: "Monke",
     feedbacks: [],
     lastFeedback: {
-      name: "",
-      email: "",
-      message: "",
+      name: "state",
+      email: "state",
+      message: "state",
     },
   },
   mutations: {
@@ -30,6 +30,7 @@ export default createStore({
       FeedbackService.postFeedback(feedback)
         .then(() => {
           commit("ADD_FEEDBACK", feedback);
+          feedback.message = "";
           commit("SET_LAST_FEEDBACK", feedback);
         })
         .catch((error) => {

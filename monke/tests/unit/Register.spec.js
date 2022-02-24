@@ -1,5 +1,5 @@
 import { flushPromises, shallowMount } from "@vue/test-utils";
-import createStore from "@/store/index.js";
+import store from "@/store/index.js";
 import Register from "@/components/Register.vue";
 
 describe("Register.vue", () => {
@@ -7,7 +7,7 @@ describe("Register.vue", () => {
     const wrapper = shallowMount(Register, {
       global: {
         mocks: {
-          $store: createStore(),
+          $store: store,
         },
       },
     });
@@ -30,7 +30,7 @@ describe("Register.vue", () => {
     const wrapper = shallowMount(Register, {
       global: {
         mocks: {
-          $store: createStore(),
+          $store: store,
         },
       },
     });
@@ -51,7 +51,6 @@ describe("Register.vue", () => {
   });
 
   it("Check that username is saved to the vuex store", async () => {
-    const store = createStore();
     const wrapper = shallowMount(Register, {
       global: {
         mocks: {

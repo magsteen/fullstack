@@ -18,7 +18,9 @@ export default {
   },
   computed: {
     feedbacks() {
-      return this.$store.state.feedbacks;
+      return this.$store.state.feedbacks.filter(
+        (feedback) => feedback.status === "Sent!"
+      );
     },
   },
 };

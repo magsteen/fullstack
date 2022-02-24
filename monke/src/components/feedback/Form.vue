@@ -2,10 +2,28 @@
   <div class="container">
     <h1>Contactform</h1>
     <form class="form-container" @submit.prevent="onSubmit">
-      <FormItem label="Name" v-model="name" :error="errors.name" />
-      <FormItem label="E-mail" v-model="email" :error="errors.email" />
-      <FormItem label="Message" v-model="message" :error="errors.message" />
-      <button type="submit">Submit</button>
+      <FormItem
+        label="Name*"
+        placeholder="E.g Karen..."
+        v-model="name"
+        :error="errors.name"
+      />
+      <FormItem
+        label="E-mail*"
+        placeholder="E.g entitled@humen.com..."
+        v-model="email"
+        :error="errors.email"
+      />
+      <FormItem
+        label="Message*"
+        placeholder="E.g Where is the manager??"
+        v-model="message"
+        :error="errors.message"
+      />
+      <div>
+        <button type="submit">Submit</button>
+        <p>{{ status }}</p>
+      </div>
     </form>
   </div>
 </template>
@@ -14,11 +32,17 @@
 import FormItem from "@/components/feedback/FormItem.vue";
 import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
+import { useStore } from "vuex";
 
 export default {
   name: "Form",
   components: {
     FormItem,
+  },
+  computed: {
+    status() {
+      return this.$store.state.status;
+    },
   },
   methods: {
     async onSubmit() {
@@ -27,9 +51,19 @@ export default {
           if (feedback === undefined) {
             return;
           }
-          console.log(feedback);
-          this.$store.dispatch("createFeedback", feedback);
-          alert("Feedback submitted");
+          this.$store.dispatch("updateStatus", "Loading...");
+          console.log(this.status);
+          setTimeout(() => {
+            const status = "Sent!";
+            this.$store.dispatch("updateStatus", status);
+            this.$store.dispatch("createFeedback", {
+              ...feedback,
+              status: status,
+            });
+            setTimeout(() => {
+              this.$store.dispatch("updateStatus", "");
+            }, 1500);
+          }, 1500);
         });
       } catch (error) {
         console.error(error);
@@ -37,6 +71,7 @@ export default {
     },
   },
   setup() {
+    const store = useStore();
     const validationSchema = object({
       name: string().required("name is required").min(2, "to short name"),
       email: string().required("email is required").email("invalid email"),
@@ -46,9 +81,15 @@ export default {
     const { handleSubmit, errors } = useForm({
       validationSchema,
       initialValues: {
-        name: "",
-        email: "",
-        message: "",
+        name:
+          store.state.unfinishedFeedback.username === ""
+            ? store.state.username
+            : store.state.unfinishedFeedback.username,
+        email:
+          store.state.unfinishedFeedback.email === ""
+            ? store.state.email
+            : store.state.unfinishedFeedback.email,
+        message: store.state.unfinishedFeedback.message,
       },
     });
 

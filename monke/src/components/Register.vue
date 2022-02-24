@@ -1,10 +1,12 @@
 <template>
   <div class="Register">
     <h1>Register page</h1>
-    <p>Name: <input data-testid="name-input" type="text" v-model="name" /></p>
     <p>
       Username:
       <input data-testid="username-input" type="text" v-model="username" />
+    </p>
+    <p>
+      Email: <input data-testid="email-input" type="text" v-model="email" />
     </p>
     <p>
       Password:
@@ -22,8 +24,8 @@ export default {
   name: "Register",
   data() {
     return {
-      name: "",
       username: "",
+      email: "",
       password: "",
       isRegistered: "",
     };
@@ -31,8 +33,8 @@ export default {
   methods: {
     register() {
       const registerRequest = {
-        name: this.name,
         username: this.username,
+        email: this.email,
         password: this.password,
       };
       const registerResponse = doRegister(registerRequest);
@@ -45,7 +47,7 @@ export default {
       //Confirmation that everything worked
       if (this.isRegistered === "Success") {
         console.log("monkke");
-        this.$store.dispatch("registerUser", this.username);
+        this.$store.dispatch("registerUser", registerRequest);
         // .catch((error) => {
         //   console.log(error);
         // });

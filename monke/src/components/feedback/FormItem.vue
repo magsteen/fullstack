@@ -4,7 +4,7 @@
     <input
       v-bind="$attrs"
       :value="modelValue"
-      :placeholder="label"
+      :placeholder="placeholder"
       class="inputfield"
       @input="$emit('update:modelValue', $event.target.value)"
       :id="uuid"
@@ -20,6 +20,10 @@ import NewUID from "@/utils/uid.js";
 export default {
   name: "FormItem",
   props: {
+    placeholder: {
+      type: String,
+      default: "",
+    },
     label: {
       type: String,
       default: "",

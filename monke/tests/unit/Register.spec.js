@@ -11,18 +11,18 @@ describe("Register.vue", () => {
         },
       },
     });
-    const nameinput = wrapper.find('input[data-testid="name-input"');
     const usernameinput = wrapper.find('input[data-testid="username-input"');
+    const emailinput = wrapper.find('input[data-testid="email-input"');
     const passwordinput = wrapper.find('input[data-testid="password-input"');
 
-    await nameinput.setValue("Monke");
     await usernameinput.setValue("Gorilla");
+    await emailinput.setValue("Monke@mail.com");
     await passwordinput.setValue("Banana");
 
     await flushPromises();
 
-    expect(nameinput.element.value).toBe("Monke");
     expect(usernameinput.element.value).toBe("Gorilla");
+    expect(emailinput.element.value).toBe("Monke@mail.com");
     expect(passwordinput.element.value).toBe("Banana");
   });
 
@@ -34,14 +34,14 @@ describe("Register.vue", () => {
         },
       },
     });
-    const nameinput = wrapper.find('input[data-testid="name-input"');
     const usernameinput = wrapper.find('input[data-testid="username-input"');
+    const emailinput = wrapper.find('input[data-testid="email-input"');
     const passwordinput = wrapper.find('input[data-testid="password-input"');
     const isRegistered = wrapper.find('label[data-testid="status"');
     const submitButton = wrapper.find("button");
 
-    await nameinput.setValue("Monke");
     await usernameinput.setValue("Gorilla");
+    await emailinput.setValue("Monke@mail.com");
     await passwordinput.setValue("Banana");
     await submitButton.trigger("click");
 
@@ -58,13 +58,13 @@ describe("Register.vue", () => {
         },
       },
     });
-    const nameinput = wrapper.find('input[data-testid="name-input"');
     const usernameinput = wrapper.find('input[data-testid="username-input"');
+    const emailinput = wrapper.find('input[data-testid="email-input"');
     const passwordinput = wrapper.find('input[data-testid="password-input"');
     const submitButton = wrapper.find("button");
 
-    await nameinput.setValue("Monke");
     await usernameinput.setValue("Gorilla");
+    await emailinput.setValue("Monke@mail.com");
     await passwordinput.setValue("Banana");
     await submitButton.trigger("click");
 

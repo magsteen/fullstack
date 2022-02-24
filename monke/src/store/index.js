@@ -4,11 +4,14 @@ import FeedbackService from "../services/FeedbackService";
 let store = createStore({
   state: {
     username: "",
+    email: "",
     feedbacks: [],
-    lastFeedback: {
-      name: "state",
-      email: "state",
-      message: "state",
+    status: "",
+    unfinishedFeedback: {
+      username: "",
+      email: "",
+      message: "",
+      status: "",
     },
   },
   mutations: {
@@ -24,9 +27,14 @@ let store = createStore({
     SET_LAST_FEEDBACK(state, feedback) {
       state.lastFeedback = feedback;
     },
+    SET_STATUS(state, status) {
+      state.status = status;
+    },
     SET_USERNAME(state, username) {
-      console.log(username);
       state.username = username;
+    },
+    SET_EMAIL(state, email) {
+      state.email = email;
     },
   },
   actions: {
@@ -49,9 +57,13 @@ let store = createStore({
           console.log(err);
         });
     },
-    registerUser({ commit }, username) {
-      console.log(username);
-      commit("SET_USERNAME", username);
+    updateStatus({ commit }, status) {
+      commit("SET_STATUS", status);
+    },
+    registerUser({ commit }, registerFields) {
+      console.log(registerFields);
+      commit("SET_USERNAME", registerFields.username);
+      commit("SET_EMAIL", registerFields.email);
     },
     loginUser({ commit }, username) {
       console.log(username);

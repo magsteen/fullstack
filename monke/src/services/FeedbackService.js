@@ -20,3 +20,8 @@ export default {
     return API.get("/feedbacks/" + id);
   },
 };
+
+export function updateStatus(context) {
+  context.status = "isoading";
+  setTimeout(() => {}, 1500);
+}

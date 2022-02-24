@@ -30,7 +30,6 @@ export default createStore({
       FeedbackService.postFeedback(feedback)
         .then(() => {
           commit("ADD_FEEDBACK", feedback);
-          feedback.message = "";
           commit("SET_LAST_FEEDBACK", feedback);
         })
         .catch((error) => {

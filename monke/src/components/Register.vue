@@ -45,9 +45,10 @@ export default {
       //Confirmation that everything worked
       if (this.isRegistered === "Success") {
         console.log("monkke");
-        this.$store.dispatch("registerUser", this.username).catch((error) => {
-          console.log(error);
-        });
+        this.$store.dispatch("registerUser", this.username);
+        // .catch((error) => {
+        //   console.log(error);
+        // });
         this.$emit("sent");
       }
     },

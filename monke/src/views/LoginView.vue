@@ -36,10 +36,12 @@ export default {
 
       //If login is successfull then status should be set as "Success"
       //Mocking this since were not testing "doLogin" but the submit button
+      
       if (this.loginStatus === "Success") {
-        this.$store.dispatch("loginUser", this.username).catch((error) => {
-          console.log(error);
-        });
+        this.$store.dispatch("loginUser", this.username);
+        //   .catch((error) => {
+        //   console.log(error);
+        // });
         this.$router.push("/home");
       } else if (this.loginStatus === "Failed") {
         document.getElementById("loginFailResolver").style.visibility =

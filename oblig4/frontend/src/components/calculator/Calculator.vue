@@ -31,6 +31,8 @@ const Buttons = {
 };
 
 import CalculatorButton from "@/components//calculator/CalculatorButton.vue";
+import CalculationService from "@/services/CalculationService.js";
+
 export default {
   name: "Calculator",
   components: { CalculatorButton },
@@ -62,7 +64,7 @@ export default {
     };
   },
   methods: {
-    handleClick(button) {
+    async handleClick(button) {
       switch (button.type) {
         case Buttons.C:
           this.input = "";
@@ -87,7 +89,10 @@ export default {
         case Buttons.CALC:
           if ([""].includes(this.input)) break;
           try {
-            this.logs.push({ formula: this.input, result: eval(this.input) });
+            this.logs.push({
+              formula: this.input,
+              result: await CalculationService.doCalculation(this.input),
+            });
           } catch (error) {
             this.logs.push({
               formula: this.input,

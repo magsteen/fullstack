@@ -14,7 +14,7 @@ services:
       MYSQL_ROOT_PASSWORD: db_root_pass
 
   backend:
-    build: backend/backend/
+    build: backend/
     restart: always
     ports:
       - 8085:8080
@@ -26,7 +26,7 @@ services:
     depends_on:
       - db
     labels:
-      docker-compose-watcher.path: "backend/backend/"
+      docker-compose-watcher.path: "backend/"
 
   frontend:
     build:

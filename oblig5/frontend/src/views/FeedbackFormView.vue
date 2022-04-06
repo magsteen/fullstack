@@ -5,9 +5,9 @@
   </div>
 </template>
 
-<script>
-import Form from "@/components//feedback/Form.vue";
-import Feedback from "@/components/feedback/Feedback.vue";
+<script lang="ts">
+import Form from "@/components/feedback/FeedbackForm.vue";
+import Feedback from "@/components/feedback/FeedbackComponent.vue";
 
 export default {
   name: "FeedbackFormView",

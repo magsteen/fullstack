@@ -2,8 +2,9 @@
   <Register @sent="goToHome"></Register>
 </template>
 
-<script>
-import Register from "@/components/Register.vue";
+<script lang="ts">
+import Register from "@/components/RegisterComponent.vue";
+import router from "@/router";
 
 export default {
   components: {
@@ -11,7 +12,7 @@ export default {
   },
   methods: {
     goToHome() {
-      this.$router.push("/home");
+      router.push("/home");
     },
   },
 };

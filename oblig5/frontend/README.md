@@ -1,4 +1,4 @@
-# monke
+# frontend
 
 ## Project setup
 ```

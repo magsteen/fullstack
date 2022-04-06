@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { uid } from "../../utils/uid.js";
+import { uid } from "../../utils/uid";
 
 export default {
   name: "FormItem",

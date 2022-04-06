@@ -29,13 +29,13 @@
 </template>
 
 <script>
-import FormItem from "@/components/feedback/FormItem.vue";
+import FormItem from "@/components/feedback/FeedbackFormItem.vue";
 import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
 import { useStore } from "vuex";
 
 export default {
-  name: "Form",
+  name: "FeedbackForm",
   components: {
     FormItem,
   },

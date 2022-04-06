@@ -9,7 +9,7 @@
 import FeedbackItem from "@/components/feedback/FeedbackItem.vue";
 
 export default {
-  name: "Feedback",
+  name: "FeedbackComponent",
   components: {
     FeedbackItem,
   },

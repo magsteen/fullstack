@@ -1,24 +1,25 @@
 <template>
   <div class="box">
     <div class="header">
-      <div id="name">{{ item.name }}</div>
-      <div id="mail">- {{ item.email }}</div>
+      <div id="expression">{{ calculation.expression }}</div>
     </div>
     <div class="break" />
-    <div class="content">{{ item.message }}</div>
+    <div class="content">{{ calculation.result }}</div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "FeedbackItem",
+<script lang="ts">
+import { Calculation } from "@/types/Calculation";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "CalclutaionItem",
   props: {
-    item: Object,
+    calculation: {
+      type: Calculation,
+    },
   },
-  // mounted() {
-  //   console.log(this.item); // {x:1}
-  // },
-};
+});
 </script>
 
 <style scoped>

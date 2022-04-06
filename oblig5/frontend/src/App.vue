@@ -1,15 +1,14 @@
 <template>
-  <div id="nav">
+  <nav id="nav">
     <router-link to="/">Calculator</router-link> |
-    <router-link to="/contactform">Contactform</router-link> |
+    <router-link to="/calculations">Calculations</router-link> |
     <router-link to="/login">Login</router-link> |
-    <router-link to="/register">Register</router-link> |
-    <router-link to="/home">Home</router-link>
-  </div>
+    <router-link to="/register">Register</router-link>
+  </nav>
   <router-view />
 </template>
 
-<style>
+<style lang="scss">
 :root {
   --navHeight: 80px;
 }

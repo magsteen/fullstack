@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import Calculator from "@/components//calculator/Calculator.vue";
+<script lang="ts">
+import Calculator from "@/components/calculator/CalculatorComponent.vue";
 
 export default {
   name: "CalculatorView",

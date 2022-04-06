@@ -31,10 +31,10 @@ const Buttons = {
 };
 
 import CalculatorButton from "@/components//calculator/CalculatorButton.vue";
-import CalculationService from "@/service/CalculationService.js";
+import { doCalculation } from "@/service/CalculationService";
 
 export default {
-  name: "Calculator",
+  name: "CalculatorComponent",
   components: { CalculatorButton },
   data() {
     return {
@@ -91,7 +91,7 @@ export default {
           try {
             this.logs.push({
               formula: this.input,
-              result: await CalculationService.doCalculation(this.input),
+              result: await doCalculation(this.input),
             });
           } catch (error) {
             this.logs.push({

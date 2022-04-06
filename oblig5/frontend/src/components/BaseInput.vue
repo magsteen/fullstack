@@ -20,8 +20,8 @@
   </p>
 </template>
 
-<script>
-import { uid } from "../utils/uid";
+<script lang="ts">
+import { uid } from "@/utils/uid";
 
 export default {
   props: {

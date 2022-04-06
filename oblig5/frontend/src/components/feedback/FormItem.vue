@@ -14,8 +14,8 @@
   </div>
 </template>
 
-<script>
-import NewUID from "@/utils/uid.js";
+<script lang="ts">
+import { uid } from "../../utils/uid.js";
 
 export default {
   name: "FormItem",
@@ -42,7 +42,7 @@ export default {
     },
   },
   setup() {
-    const uuid = NewUID().getID();
+    const uuid = uid();
     return {
       uuid,
     };

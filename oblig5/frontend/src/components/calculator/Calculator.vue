@@ -31,7 +31,7 @@ const Buttons = {
 };
 
 import CalculatorButton from "@/components//calculator/CalculatorButton.vue";
-import CalculationService from "@/services/CalculationService.js";
+import CalculationService from "@/service/CalculationService.js";
 
 export default {
   name: "Calculator",

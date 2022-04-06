@@ -22,12 +22,12 @@
   </form>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from "vue";
 import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
 
-import { InvalidCredentialsError } from "../types/UserCredentials";
+import { InvalidCredentialsError } from "../types/InvalidCredentialsError";
 import store from "../store";
 import BaseInput from "./BaseInput.vue";
 import { mapActions } from "vuex";

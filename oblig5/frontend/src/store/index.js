@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
-import FeedbackService from "../services/FeedbackService";
+import FeedbackService from "../service/FeedbackService";
+import { authentication } from "./modules/Authentication";
 
 let store = createStore({
   state: {
@@ -70,7 +71,9 @@ let store = createStore({
       commit("SET_USERNAME", username);
     },
   },
-  modules: {},
+  modules: {
+    authentication: authentication,
+  },
 });
 
 export default store;

@@ -20,7 +20,7 @@
   </p>
 </template>
 
-<script lang="ts">
+<script>
 import { uid } from "../utils/uid";
 
 export default {

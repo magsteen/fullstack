@@ -1,3 +1,4 @@
+import { Calculation } from "@/types/Calculation";
 import axios from "axios";
 
 const CONFIG = {
@@ -16,6 +17,8 @@ export async function doCalculation(
   return result.data;
 }
 
-export async function getCalculations(): Promise<Array<string>> {
-  return await axios.get("/calculations", CONFIG);
+export async function getCalculations(): Promise<Array<Calculation>> {
+  return await (
+    await axios.get("/calculations", CONFIG)
+  ).data;
 }

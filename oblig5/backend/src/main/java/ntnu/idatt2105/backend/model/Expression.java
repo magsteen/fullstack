@@ -25,4 +25,9 @@ public class Expression {
     public String getExpression() {
         return expression;
     }
+
+    @Override
+    public String toString() {
+        return this.expression;
+    }
 }

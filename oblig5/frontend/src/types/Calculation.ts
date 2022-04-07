@@ -1,8 +1,10 @@
 export class Calculation {
+  public _id: number;
   public _expression: string;
   public _result: string;
 
-  constructor(expression: string, result: string) {
+  constructor(id: number, expression: string, result: string) {
+    this._id = id;
     this._expression = expression;
     this._result = result;
   }

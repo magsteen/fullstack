@@ -35,4 +35,9 @@ public class Result {
     public void setResult(double result) {
         this.result = Double.toString(result);
     }
+
+    @Override
+    public String toString() {
+        return this.result;
+    }
 }

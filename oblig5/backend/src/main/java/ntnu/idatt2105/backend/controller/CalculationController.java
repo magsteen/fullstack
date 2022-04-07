@@ -38,7 +38,7 @@ public class CalculationController {
     }
 
     @GetMapping(value = "/calculations", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(value = HttpStatus.FOUND)
+    @ResponseStatus(value = HttpStatus.OK)
     public List<Calculation> getCalculations() {
         logger.info("Request to give calculations...");
         List<Calculation> calculations = service.getCalculations();

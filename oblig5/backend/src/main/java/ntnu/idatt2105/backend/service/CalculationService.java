@@ -29,9 +29,9 @@ public class CalculationService {
         try {
             logger.info("Calculating..." + expression.getExpression());
             result.setResult(new DoubleEvaluator().evaluate(expression.getExpression()));
-            calculationRepository.save(new Calculation(expression, result));
+            calculationRepository.save(new Calculation(expression.toString(), result.toString()));
         } catch (IllegalArgumentException e) {
-            calculationRepository.save(new Calculation(expression, new Result(e.getMessage())));
+            calculationRepository.save(new Calculation(expression.toString(), e.getMessage()));
             throw new IllegalExpressionException(e.getMessage());
         }
         return result;

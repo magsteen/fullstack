@@ -8,9 +8,11 @@
 
 <script lang="ts">
 import CalculationItem from "@/components/calculation/CalculationItem.vue";
+import { getCalculations } from "@/service/CalculationService";
 import { Calculation } from "@/types/Calculation";
+import { defineComponent } from "@vue/runtime-core";
 
-export default {
+export default defineComponent({
   name: "CalculatorView",
   components: {
     CalculationItem,
@@ -22,7 +24,17 @@ export default {
       calculations: [],
     };
   },
-};
+  async mounted() {
+    try {
+      this.calculations = await getCalculations().then((calculations) => {
+        console.log(calculations);
+        return calculations;
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  },
+});
 </script>
 
 <style scoped>

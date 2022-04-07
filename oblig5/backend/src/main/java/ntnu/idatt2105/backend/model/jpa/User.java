@@ -31,6 +31,9 @@ public class User {
     @Column(nullable = false)
     private String passwordHash;
 
+    User(){
+    }
+
     public User(
             @NonNull String email,
             @NonNull String password) {

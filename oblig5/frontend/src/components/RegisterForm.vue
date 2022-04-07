@@ -1,59 +1,61 @@
 <template>
-  <form class="box" @submit.prevent="onSubmit">
-    <BaseInput
-      id="email"
-      label="Email"
-      v-model="email"
-      type="email"
-      data-testid="email-input"
-      :error="errors.email"
-    />
-    <BaseInput
-      label="Password"
-      v-model="password"
-      type="password"
-      data-testid="password-input"
-      :error="errors.password"
-    />
-    <button type="submit" class="submit-button" data-testid="login-button">
-      Submit
-    </button>
-    <label>{{ failedLoginMessage }}</label>
-  </form>
+  <div class="Register">
+    <h1>Register page</h1>
+    <form class="box" @submit.prevent="onSubmit">
+      <BaseInput
+        label="Email"
+        v-model="email"
+        type="email"
+        data-testid="email-input"
+      />
+      <BaseInput
+        label="Password"
+        v-model="password"
+        type="password"
+        data-testid="password-input"
+        :error="errors.password"
+      />
+      <button type="submit">Register</button>
+    </form>
+
+    <label data-testid="status">{{ isRegistered }}</label>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useField, useForm } from "vee-validate";
+import { register } from "@/service/RegisterService";
+import router from "@/router";
 import { object, string } from "yup";
-
-import { InvalidCredentialsError } from "@/types/UserCredentials";
-import store from "../store";
-import BaseInput from "./BaseInput.vue";
-import { mapActions } from "vuex";
-import router from "../router";
+import { useField, useForm } from "vee-validate";
+import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
-  components: { BaseInput },
-  name: "LoginComponent",
-  data: () => {
+  name: "RegisterForm",
+  data() {
     return {
-      failedLoginMessage: "",
+      isRegistered: "",
     };
   },
   methods: {
-    ...mapActions("Authentication", ["login", "logout"]),
     async onSubmit() {
       await this.submit().then(async (userCredentials) => {
         if (userCredentials !== undefined) {
-          const email = userCredentials.email;
-          const password = userCredentials.password;
-          try {
-            await store.dispatch("login", { email, password });
-            router.push("/");
-          } catch (e) {
-            if (e instanceof InvalidCredentialsError) {
-              this.failedLoginMessage = "Ugyldig epostadresse eller passord";
+          if (
+            userCredentials.email !== undefined &&
+            userCredentials.password !== undefined
+          ) {
+            try {
+              const registerResponse = await register(
+                userCredentials.email,
+                userCredentials.password
+              );
+              this.isRegistered = registerResponse;
+
+              if (this.isRegistered === "Success") {
+                router.push("calculator");
+              }
+            } catch (e) {
+              console.error(e);
             }
           }
         }

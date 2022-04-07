@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import Register from "@/components/RegisterComponent.vue";
+import Register from "@/components/RegisterForm.vue";
 import router from "@/router";
 
 export default {

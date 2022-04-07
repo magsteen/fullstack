@@ -9,8 +9,11 @@ const CONFIG = {
   },
 };
 
-export async function doCalculation(expression: string): Promise<void> {
-  return await axios.post("/calculate", expression, CONFIG);
+export async function doCalculation(
+  expression: string
+): Promise<{ result: string }> {
+  const result = await axios.post("/calculate", { expression }, CONFIG);
+  return result.data;
 }
 
 export async function getCalculations(): Promise<Array<string>> {

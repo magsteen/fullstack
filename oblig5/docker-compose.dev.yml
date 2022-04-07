@@ -8,8 +8,8 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_DATABASE: stuq_db
-      MYSQL_USER: stuq_be
+      MYSQL_DATABASE: oblig5_db
+      MYSQL_USER: oblig5_name
       MYSQL_PASSWORD: db_user_pass
       MYSQL_ROOT_PASSWORD: db_root_pass
 
@@ -19,8 +19,8 @@ services:
     ports:
       - 8085:8080
     environment:
-      DB_URL: jdbc:mysql://db:3306/stuq_db
-      DB_USERNAME: stuq_be
+      DB_URL: jdbc:mysql://db:3306/oblig5_db
+      DB_USERNAME: oblig5_name
       DB_PASSWORD: db_user_pass
       CORS: http://localhost:8080
     depends_on:

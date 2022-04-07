@@ -21,11 +21,10 @@ import ntnu.idatt2105.backend.service.UserService;
 @RequestMapping(value = "/user")
 @EnableAutoConfiguration
 public class UserController {
-
     @Autowired
     private UserService service;
 
-    @Operation(summary = "Creates a new session for a user")
+    @Operation(summary = "Creates a new user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully created user", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),

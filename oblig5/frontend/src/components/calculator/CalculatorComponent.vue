@@ -91,7 +91,9 @@ export default {
           try {
             this.logs.push({
               formula: this.input,
-              result: await doCalculation(this.input),
+              result: await doCalculation(this.input).then((data) => {
+                return data.result;
+              }),
             });
           } catch (error) {
             this.logs.push({
